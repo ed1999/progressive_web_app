@@ -8,14 +8,14 @@
   
     // EDITING STARTS HERE (you dont need to edit anything above this line)
   
-    var db = new PouchDB('calificaciones');
+    var db = new PouchDB('cervezas');
     var remoteCouch = false;
     var cookie;
   
     db.changes({
       since: "now",
       live: true
-    }).on("change", showCalificaciones);
+    }).on("change", showcervezas);
   
   
     // We have to create a new todo document and enter it in the database
@@ -36,7 +36,7 @@
     
   
     // Show the current list of todos by reading them from the database
-    function showCalificaciones() {
+    function showcervezas() {
       db.allDocs({include_docs: true})
         .then( doc => {
           redrawTodosUI(doc.rows);
@@ -48,7 +48,7 @@
   
   
     //cambiar valor a los objetos
-    function showCalificaciones() {
+    function showcervezas() {
       db.allDocs({include_docs: true})
         .then( doc => {
           doc.rows.forEach(element => {
@@ -64,7 +64,7 @@
     }
   
     //Borrar datps
-    function showCalificaciones() {
+    function showcervezas() {
       db.allDocs({include_docs: true})
         .then( doc => {
           doc.rows.forEach(element => {
@@ -204,7 +204,7 @@
     }
   
     addEventListeners();
-    showCalificaciones();
+    showcervezas();
   
     if (remoteCouch) {
       sync();
